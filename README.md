@@ -23,8 +23,15 @@ Please follow [Poetry Official Installation](https://python-poetry.org/docs/#ins
 ## Run DB Migration
 
 - Please modify `.example.env` value and rename as `.env`.
-- Execute `alembic upgrade head` to migration origianl data model to Postgres
-- If you have any model are updated, please execute `alembic revision --autogenerate -m "xxx"` to generate revision migration files for sync.
+
+### migration steps:
+
+- First of all, you should sync from the latest alembic migrations from main to your feature branch.
+- Run `alembic upgrade head` to update your local databases with the latest changes.
+- Run `alembic revision --autogenerate -m "your migration message"` to generate a revision, this step would generate a new migration file under ‘migrations/versions’ folder.
+- Check the new generated migration file, if this is not what you expected, just delete this file. If the file is expected, proceed.
+- Run `alembic upgrade head` to update your local databases with the new generated revision.
+- If you want to roll back the new revision, run `alembic downgrade -1 to rollback`.
 
 ## Run FastAPI
 
