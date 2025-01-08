@@ -1,6 +1,6 @@
 # FastAPI Portal Backend
 
-[![CI](https://github.com/aloong-planet/fastapi-backend/actions/workflows/dev.yaml/badge.svg)](https://github.com/aloong-planet/fastapi-backend/actions/workflows/dev.yaml)
+[![CI](https://github.com/aloong-planet/fastapi-backend/actions/workflows/ci.yaml/badge.svg)](https://github.com/aloong-planet/fastapi-backend/actions/workflows/ci.yaml)
 
 - [FastAPI Portal Backend](#fastapi-portal-backend)
   - [Install poetry](#install-poetry)
