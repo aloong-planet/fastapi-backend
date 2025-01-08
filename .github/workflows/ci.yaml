@@ -8,7 +8,15 @@ env:
 on:
   push:
     branches:
+      - "main"
       - "**/feat/**"
+    paths-ignore:
+      - "docs/**"
+      - "tests/**"
+      - "*.md"
+  pull_request:
+    branches:
+      - "main"
     paths-ignore:
       - "docs/**"
       - "tests/**"
