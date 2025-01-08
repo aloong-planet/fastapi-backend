@@ -1,0 +1,25 @@
+{
+  "menus": [
+    {
+      "name": "Super Admin",
+      "path": "/super-admin",
+      "children": [
+        {
+          "name": "RBAC",
+          "path": "/super-admin/rbac",
+          "superOnly": true
+        },
+        {
+          "name": "Products",
+          "path": "/super-admin/products",
+          "superOnly": true
+        },
+        {
+          "name": "Audit Logs",
+          "path": "/super-admin/audit-logs",
+          "superOnly": true
+        }
+      ]
+    }
+  ]
+}

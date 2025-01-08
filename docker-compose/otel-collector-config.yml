@@ -1,0 +1,37 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+exporters:
+  otlp/trace:
+    endpoint: jaeger:4317
+    tls:
+      insecure: true
+    keepalive:
+      time: 1ms
+
+  prometheus:
+    endpoint: "0.0.0.0:8890"
+
+processors:
+  batch:
+    timeout: 200ms
+    send_batch_size: 20000
+
+service:
+  telemetry:
+    logs:
+      level: debug
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors:
+        - batch
+      exporters:
+        - otlp/trace
+    metrics:
+      receivers: [otlp]
+      processors: []
+      exporters: [prometheus]

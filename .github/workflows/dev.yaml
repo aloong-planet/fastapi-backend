@@ -1,0 +1,35 @@
+name: CI
+env:
+  IMAGE_REGISTRY: aws.registry.xxx.com
+  REPOSITORY: portal-backend
+  VERSION_PREFIX: "1.0"
+
+
+on:
+  push:
+    branches:
+      - "**/feat/**"
+    paths-ignore:
+      - "docs/**"
+      - "tests/**"
+      - "*.md"
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build dev image
+        run: |
+          IMAGE_NAME=$IMAGE_REGISTRY/project/$REPOSITORY
+          docker build --pull \
+              -t $IMAGE_NAME:dev-latest \
+              -t $IMAGE_NAME:dev-$VERSION_PREFIX.${GITHUB_RUN_NUMBER} \
+              -f Dockerfile .

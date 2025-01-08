@@ -1,0 +1,21 @@
+Group,Name,Code
+Security,Access Control Manager,acm
+Security,Threat Detection System,tds
+Security,Vulnerability Scanner,vsc
+Network,Network Monitor Pro,nmp
+Network,Traffic Analyzer,tan
+Network,Bandwidth Manager,bdm
+Cloud,Container Orchestration,cos
+Cloud,Load Balancer Service,lbs
+Cloud,Storage Gateway,stg
+Analytics,Data Visualization,dvz
+Analytics,Report Generator,rpg
+Analytics,Metrics Dashboard,mds
+DevOps,Continuous Integration,cin
+DevOps,Deployment Manager,dpm
+DevOps,Code Repository,crp
+Platform,API Gateway,apg
+Platform,Service Registry,srg
+Platform,Message Queue,msq
+Database,Query Optimizer,qop
+Database,Backup Manager,bkm

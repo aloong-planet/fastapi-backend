@@ -1,0 +1,1728 @@
+components:
+  schemas:
+    AuditResponse:
+      example:
+        action: login
+        audit_time: '2024-07-05 01:36:29.748624'
+        detail: login system
+        id: 1
+        result: success
+        user_id: 1
+        username: admin
+      properties:
+        action:
+          description: action type to audit
+          maxLength: 50
+          title: Action
+          type: string
+        audit_time:
+          description: action time
+          format: date-time
+          title: Audit Time
+          type: string
+        detail:
+          description: detail of the action
+          maxLength: 255
+          title: Detail
+          type: string
+        id:
+          title: Id
+          type: integer
+        result:
+          description: result
+          maxLength: 16
+          title: Result
+          type: string
+        user_id:
+          description: user id
+          title: User Id
+          type: integer
+        username:
+          description: username
+          maxLength: 50
+          title: Username
+          type: string
+      required:
+      - username
+      - user_id
+      - action
+      - detail
+      - result
+      title: AuditResponse
+      type: object
+    GeneralResponse:
+      properties:
+        code:
+          default: 0
+          description: The code of the response, 0 for success, others for failure
+          title: Code
+          type: integer
+        data:
+          anyOf:
+          - {}
+          - type: 'null'
+          title: Data
+        message:
+          description: A message providing more details about the response
+          title: Message
+          type: string
+      required:
+      - message
+      title: GeneralResponse
+      type: object
+    GeneralResponse_List_MenuActions__:
+      properties:
+        code:
+          default: 0
+          description: The code of the response, 0 for success, others for failure
+          title: Code
+          type: integer
+        data:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/MenuActions'
+            type: array
+          - type: 'null'
+          title: Data
+        message:
+          description: A message providing more details about the response
+          title: Message
+          type: string
+      required:
+      - message
+      title: GeneralResponse[List[MenuActions]]
+      type: object
+    GeneralResponse_List_Menu__:
+      properties:
+        code:
+          default: 0
+          description: The code of the response, 0 for success, others for failure
+          title: Code
+          type: integer
+        data:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/Menu'
+            type: array
+          - type: 'null'
+          title: Data
+        message:
+          description: A message providing more details about the response
+          title: Message
+          type: string
+      required:
+      - message
+      title: GeneralResponse[List[Menu]]
+      type: object
+    GeneralResponse_Menu_:
+      properties:
+        code:
+          default: 0
+          description: The code of the response, 0 for success, others for failure
+          title: Code
+          type: integer
+        data:
+          anyOf:
+          - $ref: '#/components/schemas/Menu'
+          - type: 'null'
+        message:
+          description: A message providing more details about the response
+          title: Message
+          type: string
+      required:
+      - message
+      title: GeneralResponse[Menu]
+      type: object
+    GeneralResponse_NoneType_:
+      properties:
+        code:
+          default: 0
+          description: The code of the response, 0 for success, others for failure
+          title: Code
+          type: integer
+        data:
+          title: Data
+          type: 'null'
+        message:
+          description: A message providing more details about the response
+          title: Message
+          type: string
+      required:
+      - message
+      title: GeneralResponse[NoneType]
+      type: object
+    GeneralResponse_PaginationData_AuditResponse__:
+      properties:
+        code:
+          default: 0
+          description: The code of the response, 0 for success, others for failure
+          title: Code
+          type: integer
+        data:
+          anyOf:
+          - $ref: '#/components/schemas/PaginationData_AuditResponse_'
+          - type: 'null'
+        message:
+          description: A message providing more details about the response
+          title: Message
+          type: string
+      required:
+      - message
+      title: GeneralResponse[PaginationData[AuditResponse]]
+      type: object
+    GeneralResponse_PaginationData_ProductResponse__:
+      properties:
+        code:
+          default: 0
+          description: The code of the response, 0 for success, others for failure
+          title: Code
+          type: integer
+        data:
+          anyOf:
+          - $ref: '#/components/schemas/PaginationData_ProductResponse_'
+          - type: 'null'
+        message:
+          description: A message providing more details about the response
+          title: Message
+          type: string
+      required:
+      - message
+      title: GeneralResponse[PaginationData[ProductResponse]]
+      type: object
+    GeneralResponse_PaginationData_Role__:
+      properties:
+        code:
+          default: 0
+          description: The code of the response, 0 for success, others for failure
+          title: Code
+          type: integer
+        data:
+          anyOf:
+          - $ref: '#/components/schemas/PaginationData_Role_'
+          - type: 'null'
+        message:
+          description: A message providing more details about the response
+          title: Message
+          type: string
+      required:
+      - message
+      title: GeneralResponse[PaginationData[Role]]
+      type: object
+    GeneralResponse_PaginationData_UserProfile__:
+      properties:
+        code:
+          default: 0
+          description: The code of the response, 0 for success, others for failure
+          title: Code
+          type: integer
+        data:
+          anyOf:
+          - $ref: '#/components/schemas/PaginationData_UserProfile_'
+          - type: 'null'
+        message:
+          description: A message providing more details about the response
+          title: Message
+          type: string
+      required:
+      - message
+      title: GeneralResponse[PaginationData[UserProfile]]
+      type: object
+    GeneralResponse_ProductResponse_:
+      properties:
+        code:
+          default: 0
+          description: The code of the response, 0 for success, others for failure
+          title: Code
+          type: integer
+        data:
+          anyOf:
+          - $ref: '#/components/schemas/ProductResponse'
+          - type: 'null'
+        message:
+          description: A message providing more details about the response
+          title: Message
+          type: string
+      required:
+      - message
+      title: GeneralResponse[ProductResponse]
+      type: object
+    GeneralResponse_Role_:
+      properties:
+        code:
+          default: 0
+          description: The code of the response, 0 for success, others for failure
+          title: Code
+          type: integer
+        data:
+          anyOf:
+          - $ref: '#/components/schemas/Role'
+          - type: 'null'
+        message:
+          description: A message providing more details about the response
+          title: Message
+          type: string
+      required:
+      - message
+      title: GeneralResponse[Role]
+      type: object
+    GeneralResponse_UserProfile_:
+      properties:
+        code:
+          default: 0
+          description: The code of the response, 0 for success, others for failure
+          title: Code
+          type: integer
+        data:
+          anyOf:
+          - $ref: '#/components/schemas/UserProfile'
+          - type: 'null'
+        message:
+          description: A message providing more details about the response
+          title: Message
+          type: string
+      required:
+      - message
+      title: GeneralResponse[UserProfile]
+      type: object
+    GeneralResponse_User_:
+      properties:
+        code:
+          default: 0
+          description: The code of the response, 0 for success, others for failure
+          title: Code
+          type: integer
+        data:
+          anyOf:
+          - $ref: '#/components/schemas/User'
+          - type: 'null'
+        message:
+          description: A message providing more details about the response
+          title: Message
+          type: string
+      required:
+      - message
+      title: GeneralResponse[User]
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    JWTTokenResponse:
+      example:
+        jwt_token: jwt_token_string
+        username: test@gmail.com
+      properties:
+        jwt_token:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: The JWT access token for the user
+          title: Jwt Token
+        username:
+          description: The email of the user as username
+          title: Username
+          type: string
+      required:
+      - username
+      - jwt_token
+      title: JWTTokenResponse
+      type: object
+    Menu:
+      example:
+        id: 1
+        name: Incident
+        path: /incident
+        super_only: false
+      properties:
+        id:
+          description: Menu ID
+          title: Id
+          type: integer
+        name:
+          description: Name of the menu
+          title: Name
+          type: string
+        parent_id:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          description: Parent menu ID, if any
+          title: Parent Id
+        path:
+          description: API endpoint path of the menu
+          title: Path
+          type: string
+        super_only:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: false
+          description: Is this menu super only
+          title: Super Only
+      required:
+      - name
+      - path
+      - id
+      title: Menu
+      type: object
+    MenuActions:
+      example:
+        action: view
+        id: 1
+        name: Incident
+        path: /incident
+      properties:
+        action:
+          description: 'action for the menu, Possible values: hide,view,edit'
+          title: Action
+          type: string
+        id:
+          description: Menu ID
+          title: Id
+          type: integer
+        name:
+          description: Name of the menu
+          title: Name
+          type: string
+        parent_id:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          description: Parent menu ID, if any
+          title: Parent Id
+        path:
+          description: API endpoint path of the menu
+          title: Path
+          type: string
+        super_only:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: false
+          description: Is this menu super only
+          title: Super Only
+      required:
+      - name
+      - path
+      - id
+      - action
+      title: MenuActions
+      type: object
+    MenuCreate:
+      example:
+        name: Incident
+        path: /incident
+        super_only: false
+      properties:
+        name:
+          description: Name of the menu
+          title: Name
+          type: string
+        parent_id:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          description: Parent menu ID, if any
+          title: Parent Id
+        path:
+          description: API endpoint path of the menu
+          title: Path
+          type: string
+        super_only:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: false
+          description: Is this menu super only
+          title: Super Only
+      required:
+      - name
+      - path
+      title: MenuCreate
+      type: object
+    MenuUpdate:
+      example:
+        name: New Parent Menu updated
+        path: ParentMenuUpdated
+        super_only: 'False'
+      properties:
+        name:
+          description: Name of the menu
+          title: Name
+          type: string
+        parent_id:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          description: Parent menu ID, if any
+          title: Parent Id
+        path:
+          description: API endpoint path of the menu
+          title: Path
+          type: string
+        super_only:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: false
+          description: Is this menu super only
+          title: Super Only
+      required:
+      - name
+      - path
+      title: MenuUpdate
+      type: object
+    PaginationData_AuditResponse_:
+      properties:
+        items:
+          default: []
+          description: The items in the current page
+          items:
+            $ref: '#/components/schemas/AuditResponse'
+          title: Items
+          type: array
+        total:
+          default: 0
+          description: The total number of items
+          title: Total
+          type: integer
+      title: PaginationData[AuditResponse]
+      type: object
+    PaginationData_ProductResponse_:
+      properties:
+        items:
+          default: []
+          description: The items in the current page
+          items:
+            $ref: '#/components/schemas/ProductResponse'
+          title: Items
+          type: array
+        total:
+          default: 0
+          description: The total number of items
+          title: Total
+          type: integer
+      title: PaginationData[ProductResponse]
+      type: object
+    PaginationData_Role_:
+      properties:
+        items:
+          default: []
+          description: The items in the current page
+          items:
+            $ref: '#/components/schemas/Role'
+          title: Items
+          type: array
+        total:
+          default: 0
+          description: The total number of items
+          title: Total
+          type: integer
+      title: PaginationData[Role]
+      type: object
+    PaginationData_UserProfile_:
+      properties:
+        items:
+          default: []
+          description: The items in the current page
+          items:
+            $ref: '#/components/schemas/UserProfile'
+          title: Items
+          type: array
+        total:
+          default: 0
+          description: The total number of items
+          title: Total
+          type: integer
+      title: PaginationData[UserProfile]
+      type: object
+    ProductCreate:
+      example:
+        code: iam
+        name: IAM
+      properties:
+        code:
+          maxLength: 8
+          title: Code
+          type: string
+        name:
+          maxLength: 255
+          title: Name
+          type: string
+      required:
+      - code
+      - name
+      title: ProductCreate
+      type: object
+    ProductResponse:
+      example:
+        code: iam
+        id: 1
+        name: IAM
+      properties:
+        code:
+          maxLength: 8
+          title: Code
+          type: string
+        id:
+          title: Id
+          type: integer
+        name:
+          maxLength: 255
+          title: Name
+          type: string
+      required:
+      - code
+      - name
+      title: ProductResponse
+      type: object
+    ProductUpdate:
+      example:
+        code: iam
+        name: IAM Updated
+      properties:
+        code:
+          maxLength: 8
+          title: Code
+          type: string
+        name:
+          maxLength: 255
+          title: Name
+          type: string
+      required:
+      - code
+      - name
+      title: ProductUpdate
+      type: object
+    Role:
+      example:
+        description: Administrator
+        id: 1
+        is_preset: true
+        name: admin
+      properties:
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Description of the role
+          title: Description
+        id:
+          description: Role ID
+          title: Id
+          type: integer
+        is_preset:
+          default: false
+          description: Is the role a preset role
+          title: Is Preset
+          type: boolean
+        name:
+          description: Name of the role
+          minLength: 1
+          title: Name
+          type: string
+      required:
+      - name
+      - id
+      title: Role
+      type: object
+    RoleCreate:
+      example:
+        description: Administrator
+        is_preset: true
+        name: admin
+      properties:
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Description of the role
+          title: Description
+        is_preset:
+          default: false
+          description: Is the role a preset role
+          title: Is Preset
+          type: boolean
+        name:
+          description: Name of the role
+          minLength: 1
+          title: Name
+          type: string
+      required:
+      - name
+      title: RoleCreate
+      type: object
+    RoleUpdate:
+      example:
+        description: Administrator
+        is_preset: true
+        name: admin
+      properties:
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Description of the role
+          title: Description
+        is_preset:
+          default: false
+          description: Is the role a preset role
+          title: Is Preset
+          type: boolean
+        name:
+          description: Name of the role
+          minLength: 1
+          title: Name
+          type: string
+      required:
+      - name
+      title: RoleUpdate
+      type: object
+    User:
+      example:
+        email: john.doe@example.com
+        id: 1
+        is_active: true
+        name: John Doe
+      properties:
+        email:
+          description: Email address of the user
+          format: email
+          title: Email
+          type: string
+        id:
+          description: User ID
+          title: Id
+          type: integer
+        is_active:
+          default: true
+          description: Is the user active
+          title: Is Active
+          type: boolean
+        name:
+          description: Full name of the user
+          title: Name
+          type: string
+      required:
+      - name
+      - email
+      - id
+      title: User
+      type: object
+    UserCreate:
+      example:
+        email: john.doe@example.com
+        name: John Doe
+      properties:
+        email:
+          description: Email address of the user
+          format: email
+          title: Email
+          type: string
+        name:
+          description: Full name of the user
+          title: Name
+          type: string
+      required:
+      - name
+      - email
+      title: UserCreate
+      type: object
+    UserProfile:
+      example:
+        email: john.doe@example.com
+        id: 1
+        is_active: true
+        name: John Doe
+        role: admin
+      properties:
+        email:
+          description: Email address of the user
+          format: email
+          title: Email
+          type: string
+        id:
+          description: User ID
+          title: Id
+          type: integer
+        is_active:
+          default: true
+          description: Is the user active
+          title: Is Active
+          type: boolean
+        name:
+          description: Full name of the user
+          title: Name
+          type: string
+        role:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Role of the user
+          title: Role
+      required:
+      - name
+      - email
+      - id
+      title: UserProfile
+      type: object
+    UserUpdate:
+      example:
+        email: john.doe@example.com
+        name: John Doe
+      properties:
+        email:
+          description: Email address of the user
+          format: email
+          title: Email
+          type: string
+        name:
+          description: Full name of the user
+          title: Name
+          type: string
+      required:
+      - name
+      - email
+      title: UserUpdate
+      type: object
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+info:
+  description: All of backend endpoint for Fastapi Backend.
+  title: Fastapi Backend API
+  version: '1.0'
+openapi: 3.0.3
+paths:
+  /:
+    get:
+      operationId: index__get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+      summary: Index
+  /api/v1/admin/products:
+    get:
+      operationId: get_products_api_v1_admin_products_get
+      parameters:
+      - description: Filter by product name
+        in: query
+        name: name
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Filter by product name
+          title: Name
+      - description: Filter by product code
+        in: query
+        name: code
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Filter by product code
+          title: Code
+      - in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          minimum: 1
+          title: Page
+          type: integer
+      - in: query
+        name: size
+        required: false
+        schema:
+          default: 50
+          minimum: 0
+          title: Size
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_PaginationData_ProductResponse__'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Get Products
+      tags:
+      - Admin - Products
+    post:
+      operationId: create_product_api_v1_admin_products_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_ProductResponse_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Create Product
+      tags:
+      - Admin - Products
+  /api/v1/admin/products/{product_id}:
+    delete:
+      operationId: delete_product_api_v1_admin_products__product_id__delete
+      parameters:
+      - in: path
+        name: product_id
+        required: true
+        schema:
+          title: Product Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Delete Product
+      tags:
+      - Admin - Products
+    get:
+      operationId: get_product_api_v1_admin_products__product_id__get
+      parameters:
+      - in: path
+        name: product_id
+        required: true
+        schema:
+          title: Product Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_ProductResponse_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Get Product
+      tags:
+      - Admin - Products
+    put:
+      operationId: update_product_api_v1_admin_products__product_id__put
+      parameters:
+      - in: path
+        name: product_id
+        required: true
+        schema:
+          title: Product Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_ProductResponse_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Update Product
+      tags:
+      - Admin - Products
+  /api/v1/audit/audit_logs:
+    get:
+      operationId: get_audit_logs_api_v1_audit_audit_logs_get
+      parameters:
+      - description: Filter by user name
+        in: query
+        name: username
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Filter by user name
+          title: Username
+      - description: Filter by action type
+        in: query
+        name: action
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Filter by action type
+          title: Action
+      - description: Filter by result
+        in: query
+        name: result
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Filter by result
+          title: Result
+      - in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          minimum: 1
+          title: Page
+          type: integer
+      - in: query
+        name: size
+        required: false
+        schema:
+          default: 50
+          minimum: 0
+          title: Size
+          type: integer
+      - description: Field to sort by
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          default: id
+          description: Field to sort by
+          title: Sort By
+          type: string
+      - description: Sort order ('asc' or 'desc')
+        in: query
+        name: order
+        required: false
+        schema:
+          default: asc
+          description: Sort order ('asc' or 'desc')
+          title: Order
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_PaginationData_AuditResponse__'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Get audit logs.
+      tags:
+      - Audit
+  /api/v1/auth/jwt/token:
+    get:
+      operationId: jwt_token_api_v1_auth_jwt_token_get
+      parameters:
+      - in: header
+        name: user
+        required: false
+        schema:
+          title: User
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JWTTokenResponse'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Jwt Token
+      tags:
+      - Auth
+  /api/v1/auth/login/aad:
+    get:
+      operationId: aad_login_api_v1_auth_login_aad_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+      summary: Aad Login
+      tags:
+      - Auth
+  /api/v1/auth/logout:
+    get:
+      operationId: logout_api_v1_auth_logout_get
+      parameters:
+      - in: header
+        name: user
+        required: false
+        schema:
+          title: User
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Logout
+      tags:
+      - Auth
+  /api/v1/auth/menus:
+    get:
+      description: Get all menus, including parent and children menus.
+      operationId: get_menus_api_v1_auth_menus_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_List_Menu__'
+          description: Successful Response
+      summary: Get Menus
+      tags:
+      - RBAC
+    post:
+      operationId: create_menu_api_v1_auth_menus_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MenuCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_Menu_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Create Menu
+      tags:
+      - RBAC
+  /api/v1/auth/menus/{menu_id}:
+    delete:
+      operationId: delete_menu_api_v1_auth_menus__menu_id__delete
+      parameters:
+      - in: path
+        name: menu_id
+        required: true
+        schema:
+          title: Menu Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_NoneType_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Delete Menu
+      tags:
+      - RBAC
+    put:
+      operationId: update_menu_api_v1_auth_menus__menu_id__put
+      parameters:
+      - in: path
+        name: menu_id
+        required: true
+        schema:
+          title: Menu Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MenuUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_Menu_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Update Menu
+      tags:
+      - RBAC
+  /api/v1/auth/my_menus:
+    get:
+      description: Get all menus for the user, including parent and children menus.
+      operationId: get_my_menus_api_v1_auth_my_menus_get
+      parameters:
+      - in: header
+        name: user
+        required: true
+        schema:
+          title: User
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_List_MenuActions__'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Get My Menus
+      tags:
+      - RBAC
+  /api/v1/auth/my_role:
+    get:
+      description: Get the role of current user.
+      operationId: get_my_role_api_v1_auth_my_role_get
+      parameters:
+      - in: header
+        name: user
+        required: true
+        schema:
+          title: User
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_Role_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Get My Role
+      tags:
+      - RBAC
+  /api/v1/auth/redirect:
+    get:
+      operationId: redirect_api_v1_auth_redirect_get
+      parameters:
+      - in: query
+        name: code
+        required: true
+        schema:
+          title: Code
+          type: string
+      - in: query
+        name: state
+        required: true
+        schema:
+          title: State
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Redirect
+      tags:
+      - Auth
+  /api/v1/auth/roles:
+    get:
+      operationId: read_roles_api_v1_auth_roles_get
+      parameters:
+      - in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          minimum: 1
+          title: Page
+          type: integer
+      - in: query
+        name: size
+        required: false
+        schema:
+          default: 50
+          minimum: 0
+          title: Size
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_PaginationData_Role__'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Read Roles
+      tags:
+      - RBAC
+    post:
+      operationId: create_role_api_v1_auth_roles_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_Role_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Create Role
+      tags:
+      - RBAC
+  /api/v1/auth/roles/{role_id}:
+    delete:
+      operationId: delete_role_api_v1_auth_roles__role_id__delete
+      parameters:
+      - in: path
+        name: role_id
+        required: true
+        schema:
+          title: Role Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_NoneType_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Delete Role
+      tags:
+      - RBAC
+    get:
+      operationId: read_role_api_v1_auth_roles__role_id__get
+      parameters:
+      - in: path
+        name: role_id
+        required: true
+        schema:
+          title: Role Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_Role_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Read Role
+      tags:
+      - RBAC
+    put:
+      operationId: update_role_api_v1_auth_roles__role_id__put
+      parameters:
+      - in: path
+        name: role_id
+        required: true
+        schema:
+          title: Role Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_Role_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Update Role
+      tags:
+      - RBAC
+  /api/v1/auth/roles/{role_id}/menus:
+    get:
+      description: Get all menus for a role, including parent and children menus.
+      operationId: read_role_menus_api_v1_auth_roles__role_id__menus_get
+      parameters:
+      - in: path
+        name: role_id
+        required: true
+        schema:
+          title: Role Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_List_MenuActions__'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Read Role Menus
+      tags:
+      - RBAC
+    put:
+      operationId: assign_role_menus_api_v1_auth_roles__role_id__menus_put
+      parameters:
+      - in: path
+        name: role_id
+        required: true
+        schema:
+          title: Role Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/MenuActions'
+              title: Menus
+              type: array
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_List_MenuActions__'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Assign Role Menus
+      tags:
+      - RBAC
+  /api/v1/auth/users:
+    get:
+      operationId: read_users_api_v1_auth_users_get
+      parameters:
+      - in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          minimum: 1
+          title: Page
+          type: integer
+      - in: query
+        name: size
+        required: false
+        schema:
+          default: 50
+          minimum: 0
+          title: Size
+          type: integer
+      - description: Field to sort by
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          default: id
+          description: Field to sort by
+          title: Sort By
+          type: string
+      - description: Sort order ('asc' or 'desc')
+        in: query
+        name: order
+        required: false
+        schema:
+          default: asc
+          description: Sort order ('asc' or 'desc')
+          title: Order
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_PaginationData_UserProfile__'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Read Users
+      tags:
+      - RBAC
+    post:
+      operationId: create_user_api_v1_auth_users_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_User_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: '[TestOnly] Create a user'
+      tags:
+      - RBAC
+  /api/v1/auth/users/{user_id}:
+    delete:
+      operationId: delete_user_api_v1_auth_users__user_id__delete
+      parameters:
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          title: User Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_NoneType_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: '[Test Only] Delete a user'
+      tags:
+      - RBAC
+    get:
+      operationId: read_user_api_v1_auth_users__user_id__get
+      parameters:
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          title: User Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_UserProfile_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: '[TestOnly] Get a user'
+      tags:
+      - RBAC
+    put:
+      operationId: update_user_api_v1_auth_users__user_id__put
+      parameters:
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          title: User Id
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_User_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Update User
+      tags:
+      - RBAC
+  /api/v1/auth/users/{user_id}/role:
+    put:
+      operationId: assign_user_role_api_v1_auth_users__user_id__role_put
+      parameters:
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          title: User Id
+          type: integer
+      - in: query
+        name: role_id
+        required: true
+        schema:
+          title: Role Id
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralResponse_NoneType_'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Assign User Role
+      tags:
+      - RBAC
+  /versions:
+    get:
+      operationId: get_versions_versions_get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                title: Response Get Versions Versions Get
+                type: object
+          description: Successful Response
+      summary: Get Versions
+      tags:
+      - Versions

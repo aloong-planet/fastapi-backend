@@ -1,0 +1,144 @@
+version: "3"
+
+services:
+  otel_collector:
+    container_name: otel_collector
+    hostname: otel_collector
+    image: otel/opentelemetry-collector-contrib:0.99.0
+    volumes:
+      - "./otel-collector-config.yml:/etc/otelcol/otel-collector-config.yml"
+    command: --config /etc/otelcol/otel-collector-config.yml
+    ports:
+      - "4318:4318"
+      - "4317:4317"
+      - "8890:8890"
+    networks:
+      - webserver_network
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.52
+    ports:
+      - "16686:16686"
+    environment:
+      - LOG_LEVEL=debug
+    networks:
+      - webserver_network
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis
+    hostname: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - webserver_network
+
+  redisinsight:
+    image: redis/redisinsight:2.52
+    hostname: redisinsight
+    ports:
+      - "5540:5540"
+    networks:
+      - webserver_network
+    depends_on:
+      - redis
+
+  postgres:
+    image: postgres:16.3
+    container_name: postgres
+    hostname: postgres
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    networks:
+      - webserver_network
+    environment:
+      - POSTGRES_DB=fastapi
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    restart: always
+
+  fastapi-server:
+    image: fastapi-backend:latest
+    container_name: fastapi-server
+    hostname: fastapi
+    networks:
+      - webserver_network
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis
+      - otel_collector
+      - jaeger
+    restart: always
+
+  keeper:
+    image: zookeeper:3.7
+    container_name: keeper
+    hostname: keeper
+    networks:
+      - webserver_network
+
+  clickhouse1:
+    image: clickhouse/clickhouse-server:24.4.3-alpine
+    container_name: clickhouse1
+    hostname: clickhouse1
+    networks:
+      - webserver_network
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - ${PWD}/clickhouse/ck1:/etc/clickhouse-server
+    depends_on:
+      - keeper
+
+  clickhouse2:
+    image: clickhouse/clickhouse-server:24.4.3-alpine
+    container_name: clickhouse2
+    hostname: clickhouse2
+    networks:
+      - webserver_network
+    ports:
+      - "8124:8123"
+      - "9001:9000"
+    volumes:
+      - ${PWD}/clickhouse/ck2:/etc/clickhouse-server
+    depends_on:
+      - keeper
+
+  clickhouse-init:
+    image: clickhouse/clickhouse-server:24.4.3-alpine
+    container_name: clickhouse-init
+    hostname: clickhouse-init
+    volumes:
+      - ${PWD}/clickhouse/init.sql:/tmp/init.sql
+    depends_on:
+      - clickhouse1
+      - clickhouse2
+    networks:
+      - webserver_network
+    entrypoint: [ '/bin/sh', '-c' ]
+    command: |
+      "
+      while ! clickhouse-client --host clickhouse1 -q \"SHOW databases;\"; do
+          echo waiting for clickhouse up
+          sleep 1
+      done
+
+      clickhouse-client --host clickhouse1 --queries-file /tmp/init.sql
+
+      tail -f /dev/null
+      "
+
+networks:
+  webserver_network:
+    name: hermes-network
+    ipam:
+      config:
+        - subnet: 172.23.0.0/24
+  default:
